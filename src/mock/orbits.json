@@ -1,0 +1,108 @@
+[
+    {
+      "name": "Apollo-X1",
+      "type": "probe",
+      "operational": true,
+      "orbitType": "HIGH",
+      "launchDate": "2022-03-15"
+    },
+    {
+      "name": "HubbleScope",
+      "type": "Telescope",
+      "operational": true,
+      "orbitType": "LOW",
+      "launchDate": "1990-04-24"
+    },
+    {
+      "name": "GeoSat-5",
+      "type": "communication",
+      "operational": false,
+      "orbitType": "HIGH",
+      "launchDate": "2001-11-09"
+    },
+    {
+      "name": "ISS Alpha",
+      "type": "space station",
+      "operational": true,
+      "orbitType": "LOW",
+      "launchDate": "1998-11-20"
+    },
+    {
+      "name": "StellarDebris-03",
+      "type": "space debris",
+      "operational": false,
+      "orbitType": "LOW",
+      "launchDate": "2010-05-12"
+    },
+    {
+      "name": "NavSat-21",
+      "type": "positioning",
+      "operational": true,
+      "orbitType": "HIGH",
+      "launchDate": "2018-07-08"
+    },
+    {
+      "name": "DeepProbe-Z",
+      "type": "probe",
+      "operational": false,
+      "orbitType": "HIGH",
+      "launchDate": "2005-06-30"
+    },
+    {
+      "name": "SkyWatch-T",
+      "type": "Telescope",
+      "operational": false,
+      "orbitType": "HIGH",
+      "launchDate": "1995-08-17"
+    },
+    {
+      "name": "OrbCom-7",
+      "type": "communication",
+      "operational": true,
+      "orbitType": "LOW",
+      "launchDate": "2021-01-10"
+    },
+    {
+      "name": "TrashOrb-9",
+      "type": "space debris",
+      "operational": false,
+      "orbitType": "LOW",
+      "launchDate": "1999-12-05"
+    },
+    {
+      "name": "Station Beta",
+      "type": "space station",
+      "operational": false,
+      "orbitType": "LOW",
+      "launchDate": "2007-03-18"
+    },
+    {
+      "name": "NavGrid-2",
+      "type": "positioning",
+      "operational": true,
+      "orbitType": "HIGH",
+      "launchDate": "2019-11-25"
+    },
+    {
+      "name": "CommNet-X",
+      "type": "communication",
+      "operational": true,
+      "orbitType": "HIGH",
+      "launchDate": "2020-05-14"
+    },
+    {
+      "name": "Telescope Neo",
+      "type": "Telescope",
+      "operational": true,
+      "orbitType": "LOW",
+      "launchDate": "2017-02-19"
+    },
+    {
+      "name": "DebrisCluster-22",
+      "type": "space debris",
+      "operational": false,
+      "orbitType": "HIGH",
+      "launchDate": "1988-09-01"
+    }
+  ]
+  
