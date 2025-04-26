@@ -1,15 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const OrbitList = ({
-  orbits,
-  query,
-}: {
-  orbits: Array<Record<string, string | boolean>>;
+interface OrbitItem {
+  id: number;
+  name: string;
+  type: string;
+  operational: boolean;
+  orbitType: string;
+  launchDate: string;
+}
+
+interface OrbitListProps {
+  orbits: OrbitItem[];
   query: string;
-}) => {
+}
+
+const OrbitList = ({ orbits, query }: OrbitListProps) => {
   const [data, setData] = useState(orbits);
-  const keys = Object.keys(orbits[0] || {});
+  const keys =
+    orbits.length > 0 ? (Object.keys(orbits[0]) as (keyof OrbitItem)[]) : [];
 
   const countTypes = (data: typeof orbits) => {
     const result: Record<string, number> = {};
@@ -42,7 +51,7 @@ const OrbitList = ({
     setData(workingData);
   }, [orbits, query]);
 
-  const sortData = (field: string) => {
+  const sortData = (field: keyof OrbitItem) => {
     const sortedData = [...data].sort((a, b) => {
       if (a[field] < b[field]) return -1;
       if (a[field] > b[field]) return 1;
@@ -53,7 +62,6 @@ const OrbitList = ({
 
   return (
     <>
-      {" "}
       <div className="overflow-x-auto w-full max-h-[400px] flex flex-col gap-8 max-w-[690px] rounded-lg border border-gray-300 ">
         <table className="w-full text-sm text-left text-black ">
           <thead className="bg-gray-100 text-gray-700 uppercase">
@@ -73,25 +81,25 @@ const OrbitList = ({
 
           {data.length > 0 ? (
             <tbody>
-              {data.map((item, rowIndex) => (
+              {data.map((item) => (
                 <tr
-                  key={rowIndex}
+                  key={item.id}
                   className={
-                    rowIndex % 2 === 0
+                    item.id % 2 === 0
                       ? "bg-white"
                       : "bg-gray-50 hover:bg-gray-100"
                   }
                 >
-                  {Object.keys(item).map((key, cellIndex) => (
+                  {Object.keys(item).map((key, index) => (
                     <td
-                      key={cellIndex}
+                      key={index}
                       className={
-                        String(item[key]) === "space debris"
+                        String(item[key as keyof OrbitItem]) === "space debris"
                           ? "bg-amber-300 px-4 py-2 border-b text-center"
                           : "px-4 py-2 border-b text-center"
                       }
                     >
-                      {String(item[key])}
+                      {String(item[key as keyof OrbitItem])}
                     </td>
                   ))}
                 </tr>
