@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-interface OrbitItem {
+export interface OrbitItem {
   id: number;
   name: string;
   type: string;
@@ -126,7 +126,7 @@ const OrbitList = ({ orbits, query }: OrbitListProps) => {
           </tr>
         </tbody>
       </table>
-      <div className="overflow-x-auto w-full max-h-[400px] flex flex-col gap-8 max-w-[800px] rounded-lg border border-gray-300 ">
+      <section className="overflow-x-auto w-full flex flex-col gap-8 max-w-[800px] rounded-lg border border-gray-300 ">
         <table className="w-full text-sm text-left text-black ">
           <thead className="bg-gray-100 text-gray-700 uppercase">
             <tr>
@@ -204,7 +204,7 @@ const OrbitList = ({ orbits, query }: OrbitListProps) => {
             </tbody>
           )}
         </table>
-      </div>
+      </section>
     </>
   );
 };

@@ -1,22 +1,26 @@
-"use client";
-
 import OrbitList from "@/components/OrbitList";
-import orbits from "@/mock/orbits.json";
-import { useState } from "react";
-export default function Home() {
-  const [query, setQuery] = useState("");
-  function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
-  }
+import { PaginationComponent } from "@/components/Pagination";
+import { Search } from "@/components/Search";
+import { getSummaries } from "@/data/loader";
+interface SearchParamsProps {
+  searchParams?: {
+    page?: string;
+    query?: string;
+  };
+}
+
+export default async function Home({ searchParams }: SearchParamsProps) {
+  const search = await searchParams;
+  const query = search?.query ?? "";
+  const perPage = 8;
+  const currentPage = Number(search?.page) || 1;
+  const { res, length } = getSummaries(currentPage, perPage);
+
   return (
-    <main className="flex h-screen flex-col items-center  gap-6 p-24">
-      <input
-        className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        placeholder="search here"
-        onChange={onChangeHandler}
-        type="text"
-      />
-      <OrbitList orbits={orbits} query={query} />
+    <main className="flex  flex-col items-center  gap-6 p-24">
+      <Search currentPage={currentPage} />
+      <OrbitList orbits={res} query={query} />
+      <PaginationComponent pageCount={length} />
     </main>
   );
 }
