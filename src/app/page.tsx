@@ -17,7 +17,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
   const { res, length } = getSummaries(currentPage, perPage);
 
   return (
-    <main className="flex  flex-col items-center  gap-6 p-24 ">
+    <main className="flex  flex-col items-center  gap-6 p-24 h-screen bg-gray-900">
       <Search currentPage={currentPage} />
       <OrbitList orbits={res} query={query} />
       <PaginationComponent pageCount={length} />
