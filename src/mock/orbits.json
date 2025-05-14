@@ -10,7 +10,7 @@
     {
       "id": 2,
       "name": "HubbleScope",
-      "type": "Telescope",
+      "type": "telescope",
       "operational": true,
       "orbitType": "LOW",
       "launchDate": "1990-04-24"
@@ -58,7 +58,7 @@
     {
       "id": 8,
       "name": "SkyWatch-T",
-      "type": "Telescope",
+      "type": "telescope",
       "operational": false,
       "orbitType": "HIGH",
       "launchDate": "1995-08-17"
@@ -105,8 +105,8 @@
     },
     {
       "id": 14,
-      "name": "Telescope Neo",
-      "type": "Telescope",
+      "name": "telescope Neo",
+      "type": "telescope",
       "operational": true,
       "orbitType": "LOW",
       "launchDate": "2017-02-19"

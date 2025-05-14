@@ -1,6 +1,6 @@
 import { OrbitItem } from "@/components/OrbitList";
 import orbits from "../mock/orbits.json"
-export  function getSummaries( currentPage: number , perPage : number) {
+export function getSummaries( currentPage: number , perPage : number) {
     const totalItems = [];
     for (let i = 0; i < orbits.length; i++){
         totalItems.push(i)

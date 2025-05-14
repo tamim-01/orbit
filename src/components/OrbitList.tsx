@@ -1,4 +1,5 @@
 "use client";
+import { countTypes } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -13,10 +14,11 @@ export interface OrbitItem {
 
 interface OrbitListProps {
   orbits: OrbitItem[];
-  query: string;
+  query?: string;
+  categoryArray?: string[];
 }
 
-const OrbitList = ({ orbits, query }: OrbitListProps) => {
+const OrbitList = ({ orbits, query, categoryArray }: OrbitListProps) => {
   const [data, setData] = useState(orbits);
   type SortDirection = "none" | "asc" | "desc";
   const [sortConfig, setSortConfig] = useState<
@@ -33,36 +35,25 @@ const OrbitList = ({ orbits, query }: OrbitListProps) => {
   const keys =
     orbits.length > 0 ? (Object.keys(orbits[0]) as (keyof OrbitItem)[]) : [];
 
-  const countTypes = (data: typeof orbits) => {
-    const result: Record<string, number> = {};
-
-    data.forEach((item) => {
-      const type = item.type;
-      if (typeof type === "string") {
-        result[type] = (result[type] || 0) + 1;
-      }
-    });
-
-    return result;
-  };
-
-  const countTypesData = countTypes(data);
-  const orbitTypes = Object.keys(countTypes(orbits));
-
   useEffect(() => {
-    if (!query) {
-      setData(orbits);
-      return;
+    let workingData = orbits;
+
+    if (query) {
+      workingData = workingData.filter((item) =>
+        Object.values(item).some((value) =>
+          value.toString().toLowerCase().includes(query.toLowerCase())
+        )
+      );
     }
 
-    const workingData = orbits.filter((item) =>
-      Object.values(item).some((value) =>
-        value.toString().toLowerCase().includes(query.toLowerCase())
-      )
-    );
+    if (categoryArray && categoryArray.length > 0) {
+      workingData = workingData.filter((item) =>
+        categoryArray.includes(item.type.toLowerCase())
+      );
+    }
 
     setData(workingData);
-  }, [orbits, query]);
+  }, [orbits, query, categoryArray]);
 
   const handleSort = (field: keyof OrbitItem) => {
     setSortConfig((prev) => {
@@ -103,7 +94,8 @@ const OrbitList = ({ orbits, query }: OrbitListProps) => {
       return sorted;
     });
   };
-
+  const countTypesData = countTypes(data);
+  const orbitTypes = Object.keys(countTypes(orbits));
   return (
     <>
       <table className="bg-gray-100 text-gray-700 uppercase rounded-2xl">
